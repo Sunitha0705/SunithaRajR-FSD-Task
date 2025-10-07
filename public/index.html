@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoicing ROI Simulator</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Invoicing ROI Simulator</h1>
+      <p class="sub">Estimate savings, payback, and ROI when automating invoicing.</p>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Inputs</h2>
+        <div class="grid">
+          <label>
+            <span>Scenario name</span>
+            <input id="scenario_name" placeholder="Q4_Pilot" />
+          </label>
+          <label>
+            <span>Monthly invoice volume</span>
+            <input id="monthly_invoice_volume" type="number" value="2000" min="0" />
+          </label>
+          <label>
+            <span>AP staff count</span>
+            <input id="num_ap_staff" type="number" value="3" min="0" />
+          </label>
+          <label>
+            <span>Avg hours per invoice</span>
+            <input id="avg_hours_per_invoice" type="number" step="0.01" value="0.17" min="0" />
+          </label>
+          <label>
+            <span>Hourly wage ($)</span>
+            <input id="hourly_wage" type="number" value="30" min="0" />
+          </label>
+          <label>
+            <span>Error rate manual (%)</span>
+            <input id="error_rate_manual" type="number" step="0.01" value="0.5" min="0" />
+          </label>
+          <label>
+            <span>Error cost ($)</span>
+            <input id="error_cost" type="number" value="100" min="0" />
+          </label>
+          <label>
+            <span>Time horizon (months)</span>
+            <input id="time_horizon_months" type="number" value="36" min="1" />
+          </label>
+          <label>
+            <span>One-time implementation ($)</span>
+            <input id="one_time_implementation_cost" type="number" value="50000" min="0" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="save_btn">Save scenario</button>
+          <button id="report_btn" class="secondary">Generate report</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Results</h2>
+        <div class="kpis">
+          <div>
+            <div class="muted">Monthly savings</div>
+            <div class="kpi" id="kpi_monthly_savings">$0</div>
+          </div>
+          <div>
+            <div class="muted">Payback (months)</div>
+            <div class="kpi" id="kpi_payback">-</div>
+          </div>
+          <div>
+            <div class="muted">ROI (%)</div>
+            <div class="kpi" id="kpi_roi">-</div>
+          </div>
+          <div>
+            <div class="muted">Cumulative savings</div>
+            <div class="kpi" id="kpi_cumulative">$0</div>
+          </div>
+        </div>
+        <div class="details">
+          <div><span>Manual labor cost / mo</span><strong id="detail_labor">$0</strong></div>
+          <div><span>Automation cost / mo</span><strong id="detail_auto">$0</strong></div>
+          <div><span>Error savings / mo</span><strong id="detail_error">$0</strong></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Saved Scenarios</h2>
+        <div class="scenario-row">
+          <select id="scenario_select"></select>
+          <div class="actions">
+            <button id="load_btn">Load</button>
+            <button id="delete_btn" class="danger">Delete</button>
+          </div>
+        </div>
+        <div id="scenario_list" class="scenario-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span class="muted">Local demo app. No authentication. Data stored in local SQLite.</span>
+    </footer>
+  </div>
+
+  <script>
+    // Set this to your Render backend URL on Vercel deployments
+    // Example: window.API_BASE = "https://your-render-service.onrender.com";
+    window.API_BASE = "";
+  </script>
+  <script src="/script.js"></script>
+</body>
+<!--
+This is a lightweight SPA that calls the backend for simulation and scenario CRUD.
+-->
+</html>
+
+

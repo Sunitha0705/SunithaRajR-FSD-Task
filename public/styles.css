@@ -1,0 +1,43 @@
+:root { --bg:#0b1220; --fg:#e2e8f0; --muted:#94a3b8; --card:#0f172a; --border:#1f2937; --accent:#38bdf8; --danger:#ef4444; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+header h1 { margin: 0 0 4px 0; font-size: 28px; }
+.sub { color: var(--muted); margin: 0 0 16px 0; }
+
+.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+
+label { display: flex; flex-direction: column; gap: 6px; }
+label span { color: var(--muted); font-size: 13px; }
+input { background: #0b1220; color: var(--fg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px #0ea5e960; }
+
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.actions { display: flex; gap: 10px; margin-top: 12px; }
+button { background: var(--accent); color: #001018; border: none; border-radius: 10px; padding: 10px 14px; font-weight: 600; cursor: pointer; }
+button.secondary { background: #22d3ee; }
+button.danger { background: var(--danger); color: #fff; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+.kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.kpi { font-size: 26px; font-weight: 800; }
+.muted { color: var(--muted); }
+.details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin-top: 8px; }
+.details div { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border); padding: 6px 0; }
+
+.scenario-row { display: flex; gap: 10px; align-items: center; }
+select { flex: 1; background: #0b1220; color: var(--fg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.scenario-list { margin-top: 12px; display: grid; gap: 6px; }
+.scenario-item { font-size: 14px; color: var(--muted); }
+
+footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .grid, .kpis, .details { grid-template-columns: 1fr; }
+}
+
+
